@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VehiAlpes Lab</title>
+</head>
+<body>
+{% block content %}
+    <form action="{% url 'proy:agregarProspecto' %}" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Agregar"/>
+    </form>
+
+    {% if perfil != None %}
+    <h3>Sugerencia: {{perfil.sugerencia}}</h3>
+    {% endif %}
+
+
+    <h2>Vendedores</h2>
+        {% for vendedor in vendedores %}
+        <h3>{{vendedor.nombre}}</h3>
+        {% endfor %}
+
+{% endblock %}
+</body>
+</html>
